@@ -61,6 +61,11 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: var(--thumbBG);
 }
+h1 {
+  font-family: Pretendard, "SF Pro KR", "SF Pro Display", "SF Pro Icons",
+  -apple-system, BlinkMacSystemFont, "Basier Square", "Apple SD Gothic Neo",
+  Roboto, "Noto Sans KR", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
 ::selection {
   background: rgba(45, 170, 219, 0.3);
