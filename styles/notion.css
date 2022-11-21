@@ -11,6 +11,7 @@
   @apply leading-8;
   @apply p-0;
   @apply my-3;
+  font-family: 'Nanum Gothic';
 }
 .notion-page-link {
   color: inherit;

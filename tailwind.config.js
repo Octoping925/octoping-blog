@@ -31,7 +31,8 @@ module.exports = {
           'system-ui',
           '-apple-system',
           'BlinkMacSystemFont',
-          'sans-serif'
+          'sans-serif',
+          'Nanum Gothic'
         ]
       }
     }

@@ -52,9 +52,7 @@ class MyDocument extends Document {
             </>
               )}
 
-          {['zh', 'ja', 'ko'].includes(
-            BLOG.lang.slice(0, 2).toLocaleLowerCase()
-          ) && (
+          {(
             <>
               <link
                 rel="preconnect"
@@ -73,6 +71,10 @@ class MyDocument extends Document {
                 href={`https://fonts.googleapis.com/css2?family=Noto+${
                   BLOG.font === 'serif' ? 'Serif' : 'Sans'
                 }+${CJK()}:wght@400;500;700&display=swap`}
+              />
+              <link
+                rel="stylesheet"
+                href={'https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;800&display=swap'}
               />
               <noscript>
                 <link

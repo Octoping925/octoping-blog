@@ -3,7 +3,7 @@ const BLOG = {
   author: 'Octoping',
   email: 'myc1365@naver.com',
   link: 'https://octoping.vercel.app',
-  description: 'This gonna be an awesome BLOG.',
+  description: 'Octoping의 블로그',
   lang: 'ko-KR', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   appearance: 'auto', // ['light', 'dark', 'auto'],
   font: 'sans-serif', // ['sans-serif', 'serif']
