@@ -1,0 +1,10 @@
+.blogpost-title {
+    font-size: 1.28rem;
+    font-family: Pretendard, "SF Pro KR", "SF Pro Display", "SF Pro Icons",
+    -apple-system, BlinkMacSystemFont, "Basier Square", "Apple SD Gothic Neo",
+    Roboto, "Noto Sans KR", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+.blogpost-summary {
+    font-family: Nanum Gothic;
+}
