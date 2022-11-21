@@ -19,7 +19,7 @@ const BlogPost = ({ post }) => {
             <p className="hidden md:block leading-8 text-gray-700 dark:text-gray-300 blogpost-summary">
               {post.summary}
             </p>
-            <table>
+            <table className="mt-2.5">
               <tbody>
                 <tr>
                 {post.tags.map(tag => (
