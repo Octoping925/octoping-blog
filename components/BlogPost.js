@@ -19,6 +19,17 @@ const BlogPost = ({ post }) => {
             <p className="hidden md:block leading-8 text-gray-700 dark:text-gray-300">
               {post.summary}
             </p>
+            <table>
+              <tbody>
+                <tr>
+                {post.tags.map(tag => (
+                  <td key={tag} className="text-xs text-gray-500 font-normal rounded-full bg-gray-200 px-2 py-1 cursor-pointer">
+                    {tag}
+                  </td>
+                ))}
+                </tr>
+              </tbody>
+            </table>
           </main>
         </article>
       </a>

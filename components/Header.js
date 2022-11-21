@@ -68,7 +68,10 @@ const Header = ({ navBarTitle, fullWidth }) => {
       >
         <div className="flex items-center">
           <Link href="/">
-            <a aria-label={BLOG.title}>
+            <div className='font-bold text-4xl flex-initial dark:text-white mr-25'>
+              Octoping Blog
+            </div>
+            {/* <a aria-label={BLOG.title}>
               <div className="h-6">
                 <svg
                   width="24"
@@ -98,7 +101,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
                   </defs>
                 </svg>
               </div>
-            </a>
+            </a> */}
           </Link>
           {navBarTitle
             ? (

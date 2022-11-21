@@ -31,24 +31,11 @@ const Layout = ({
       fullWidth={fullWidth}
     >
       <article>
-        <h1 className="font-bold text-6xl bg-gradient-to-r from-green-400 to-blue-500 dark:bg-gradient-to-r dark:from-green-400 dark:to-blue-500 text-transparent bg-clip-text">
+        <h1 className="font-bold text-6xl flex-initial bg-gradient-to-r from-green-400 to-blue-500 bg-gradient-to-r text-transparent bg-clip-text">
           {frontMatter.title}
         </h1>
         {frontMatter.type[0] !== 'Page' && (
           <nav className="flex mt-7 items-start text-gray-500 dark:text-gray-400">
-            <div className="flex mb-4">
-              <a href={BLOG.socialLink || '#'} className="flex">
-                <Image
-                  alt={BLOG.author}
-                  width={24}
-                  height={24}
-                  src={`https://gravatar.com/avatar/${emailHash}`}
-                  className="rounded-full"
-                />
-                <p className="ml-2 md:block">{BLOG.author}</p>
-              </a>
-              <span className="block">&nbsp;/&nbsp;</span>
-            </div>
             <div className="mr-2 mb-4 md:ml-0">
               {formatDate(
                 frontMatter?.date?.start_date || frontMatter.createdTime,
