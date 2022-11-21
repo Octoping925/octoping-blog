@@ -37,6 +37,13 @@
   src: url('/fonts/SourceSerif-Italic.var.woff2') format('woff2');
 }
 
+@font-face {
+  font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+  font-display: swap;
+  font-style: normal;
+  src: url('/fonts/AppleSDGothicNeoL.ttf') format('ttf');
+}
+
 html {
   --scrollbarBG: #ffffff00;
   --thumbBG: #b8b8b8;
