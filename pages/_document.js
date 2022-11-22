@@ -76,6 +76,10 @@ class MyDocument extends Document {
                 rel="stylesheet"
                 href={'https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;800&display=swap'}
               />
+              <link
+                rel="stylesheet"
+                href={'https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap'}
+              />
               <noscript>
                 <link
                   rel="stylesheet"
