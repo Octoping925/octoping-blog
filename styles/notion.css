@@ -45,7 +45,7 @@ svg + .notion-page-title-text {
 }
 
 pre[class*='language-'] {
-  line-height: inherit;
+  line-height: 180%;
 }
 
 .notion-bookmark:hover {
