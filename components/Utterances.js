@@ -1,6 +1,6 @@
 import BLOG from '@/blog.config'
 import { useEffect } from 'react'
-const Utterances = ({ issueTerm, layout }) => {
+const Utterances = ({ layout }) => {
   useEffect(() => {
     const theme =
       BLOG.appearance === 'auto'
@@ -13,9 +13,8 @@ const Utterances = ({ issueTerm, layout }) => {
     script.setAttribute('src', 'https://utteranc.es/client.js')
     script.setAttribute('crossorigin', 'anonymous')
     script.setAttribute('async', true)
-    // script.setAttribute('repo', BLOG.comment.utterancesConfig.repo)
     Object.entries(BLOG.comment.utterancesConfig).forEach(([key, val]) => script.setAttribute(key, val))
-    script.setAttribute('issue-term', issueTerm)
+    // script.setAttribute('issue-term', issueTerm)
     script.setAttribute('theme', theme)
     anchor.appendChild(script)
     return () => {
