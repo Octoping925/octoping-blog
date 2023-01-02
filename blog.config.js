@@ -47,7 +47,9 @@ const BLOG = {
       distractionFreeMode: false
     },
     utterancesConfig: {
-      repo: 'Octoping925/octoping-blog'
+      repo: 'Octoping925/octoping-blog',
+      'issue-term': 'og:title',
+      label: 'Comment'
     },
     cusdisConfig: {
       appId: '', // data-app-id
