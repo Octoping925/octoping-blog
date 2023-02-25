@@ -11,7 +11,7 @@
   @apply leading-8;
   @apply p-0;
   @apply my-3;
-  font-family: 'Nanum Gothic';
+  font-family: "Nanum Gothic";
 }
 .notion-page-link {
   color: inherit;
@@ -44,7 +44,7 @@ svg + .notion-page-title-text {
   @apply text-gray-900;
 }
 
-pre[class*='language-'] {
+pre[class*="language-"] {
   line-height: 180%;
 }
 
@@ -85,4 +85,18 @@ pre[class*='language-'] {
 }
 .notion-collection-row {
   @apply hidden;
+}
+
+/* css for code */
+@font-face {
+  font-family: "D2Coding";
+  src: url("../public/fonts/D2Coding.ttf");
+}
+
+pre.notion-code > code {
+  font-family: "D2Coding", monospace;
+}
+
+.token.operator {
+  background: none;
 }
