@@ -31,7 +31,7 @@ const Layout = ({
       fullWidth={fullWidth}
     >
       <article>
-        <h1 className="font-bold text-6xl bg-gradient-to-r from-green-400 to-blue-500 bg-gradient-to-r text-transparent bg-clip-text">
+        <h1 className="font-bold text-4xl sm:text-6xl bg-gradient-to-r from-green-400 to-blue-500 bg-gradient-to-r text-transparent bg-clip-text">
           {frontMatter.title}
         </h1>
         {frontMatter.type[0] !== 'Page' && (
