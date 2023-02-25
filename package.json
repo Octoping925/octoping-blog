@@ -13,7 +13,7 @@
     "url": "http://craigary.net"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NOTION_PAGE_ID=84c1539e7297449caf81be22d6dec77a next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "axios": ">=0.21.1",
+    "cross-env": "^7.0.3",
     "feed": "^4.2.2",
     "gitalk": "^1.7.2",
     "next": "^12.1.0",
@@ -34,17 +35,21 @@
     "use-ackee": "^3.0.0"
   },
   "devDependencies": {
+    "@types/react": "^18.0.28",
     "autoprefixer": "^10.4.0",
     "eslint": "<8.0.0",
     "eslint-config-next": "^12.0.3",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^5.1.1",
     "eslint-plugin-react": "^7.26.1",
     "next-sitemap": "^1.6.203",
     "postcss": "^8.3.11",
-    "tailwindcss": "^2.2.19"
+    "tailwindcss": "^2.2.19",
+    "typescript": "^4.9.5"
   },
   "bugs": {
     "url": "https://github.com/craigary/nobelium/issues",
