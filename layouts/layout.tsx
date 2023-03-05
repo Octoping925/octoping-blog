@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Container from "@/components/Container";
 import TagItem from "@/components/TagItem";
 import {
@@ -13,8 +12,9 @@ import formatDate from "@/lib/formatDate";
 import { useLocale } from "@/lib/locale";
 import { useRouter } from "next/router";
 import Comments from "@/components/Comments";
+import { Post } from "@/types";
 
-const mapPageUrl = (id) => {
+const mapPageUrl = (id: string) => {
   return "https://www.notion.so/" + id.replace(/-/g, "");
 };
 
@@ -22,8 +22,12 @@ const Layout = ({
   children,
   blockMap,
   frontMatter,
-  emailHash,
   fullWidth = false,
+}: {
+  children?: React.ReactNode;
+  blockMap?: any;
+  frontMatter: Post;
+  fullWidth?: boolean;
 }) => {
   const locale = useLocale();
   const router = useRouter();

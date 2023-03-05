@@ -1,4 +1,4 @@
-export default function getMetadata(rawMetadata) {
+export default function getMetadata(rawMetadata: any) {
   return {
     locked: rawMetadata?.format?.block_locked,
     page_full_width: rawMetadata?.format?.page_full_width,

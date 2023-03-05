@@ -1,10 +1,18 @@
+import { Post } from "@/types";
+
 // import BLOG from '@/blog.config'
 const current = new Date();
 const tomorrow = new Date(current);
 tomorrow.setDate(tomorrow.getDate() + 1);
 tomorrow.setHours(0, 0, 0, 0);
 
-export default function filterPublishedPosts({ posts, includePages }) {
+export default function filterPublishedPosts({
+  posts,
+  includePages,
+}: {
+  posts: Post[];
+  includePages: boolean;
+}) {
   if (!posts || !posts.length) return [];
 
   const publishedPosts = posts

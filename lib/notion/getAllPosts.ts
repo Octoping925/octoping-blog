@@ -5,11 +5,16 @@ import getAllPageIds from "./getAllPageIds";
 import getPageProperties from "./getPageProperties";
 import filterPublishedPosts from "./filterPublishedPosts";
 import { map, pipe, toArray, toAsync } from "@fxts/core";
+import { Post } from "@/types";
 
 /**
  * @param {{ includePages: boolean }} - false: posts only / true: include pages
  */
-export async function getAllPosts({ includePages = false }) {
+export async function getAllPosts({
+  includePages = false,
+}: {
+  includePages?: boolean;
+}) {
   const id = BLOG.notionPageId;
   const authToken = BLOG.notionAccessToken || null;
   const api = new NotionAPI({ authToken });
@@ -42,21 +47,25 @@ export async function getAllPosts({ includePages = false }) {
       return {
         ...(await getPageProperties(id, block, schema)),
         createdTime: new Date(block[id].value?.created_time).toString(),
+        // @ts-ignore
         fullWidth: block[id].value?.format?.page_full_width ?? false,
-      };
+      } as Post;
     }),
     toArray
   );
 
   // remove all the the items doesn't meet requirements
-  const posts = filterPublishedPosts({ posts: pageProperties, includePages });
+  const posts: Post[] = filterPublishedPosts({
+    posts: pageProperties,
+    includePages,
+  });
 
   // Sort by date
   if (BLOG.sortByDate) {
     posts.sort((a, b) => {
       const dateA = new Date(a?.date?.start_date || a.createdTime);
       const dateB = new Date(b?.date?.start_date || b.createdTime);
-      return dateB - dateA;
+      return dateA > dateB ? -1 : 1;
     });
   }
 

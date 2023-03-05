@@ -3,16 +3,11 @@ import { getAllPosts, getPostBlocks } from "@/lib/notion";
 import BLOG from "@/blog.config";
 import { createHash } from "crypto";
 
-const BlogPost = ({ post, blockMap, emailHash }) => {
+const BlogPost = ({ post, blockMap }) => {
   if (!post) return null;
 
   return (
-    <Layout
-      blockMap={blockMap}
-      frontMatter={post}
-      emailHash={emailHash}
-      fullWidth={post.fullWidth}
-    />
+    <Layout blockMap={blockMap} frontMatter={post} fullWidth={post.fullWidth} />
   );
 };
 

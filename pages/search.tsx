@@ -1,7 +1,14 @@
 import { getAllPosts, getAllTagsFromPosts } from "@/lib/notion";
 import SearchLayout from "@/layouts/search";
+import { Post } from "@/types";
 
-export default function search({ tags, posts }) {
+export default function search({
+  tags,
+  posts,
+}: {
+  tags: string[];
+  posts: Post[];
+}) {
   return <SearchLayout tags={tags} posts={posts} />;
 }
 

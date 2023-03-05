@@ -1,6 +1,7 @@
+import { Post } from "@/types";
 import { countBy, filter, flatMap, pipe } from "@fxts/core";
 
-export function getAllTagsFromPosts(posts) {
+export function getAllTagsFromPosts(posts: Post[]) {
   return pipe(
     posts,
     filter((post) => "tags" in post),
