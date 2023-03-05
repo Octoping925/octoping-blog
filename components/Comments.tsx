@@ -4,7 +4,7 @@ import "gitalk/dist/gitalk.css";
 const Comments = () => {
   return (
     <div>
-      <Utterances />
+      <Utterances layout={undefined} />
     </div>
   );
 };

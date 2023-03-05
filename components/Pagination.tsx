@@ -2,7 +2,13 @@ import Link from "next/link";
 import BLOG from "@/blog.config";
 import { useLocale } from "@/lib/locale";
 
-const Pagination = ({ page, showNext }) => {
+const Pagination = ({
+  page,
+  showNext,
+}: {
+  page: number;
+  showNext: boolean;
+}) => {
   const locale = useLocale();
 
   const currentPage = +page;
@@ -24,7 +30,7 @@ const Pagination = ({ page, showNext }) => {
           }
         >
           <a>
-            <button rel="prev" className="block cursor-pointer">
+            <button id="prev" className="block cursor-pointer">
               ← {locale.PAGINATION.PREV}
             </button>
           </a>
@@ -33,7 +39,7 @@ const Pagination = ({ page, showNext }) => {
       {showNext && (
         <Link href={`/page/${currentPage + 1}`}>
           <a>
-            <button rel="next" className="block cursor-pointer">
+            <button id="next" className="block cursor-pointer">
               {locale.PAGINATION.NEXT} →
             </button>
           </a>

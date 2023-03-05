@@ -1,8 +1,9 @@
-import Link from 'next/link'
-import BLOG from '@/blog.config'
-import formatDate from '@/lib/formatDate'
+import Link from "next/link";
+import BLOG from "@/blog.config";
+import formatDate from "@/lib/formatDate";
+import { Post } from "@/types";
 
-const BlogPost = ({ post }) => {
+const BlogPost = ({ post }: { post: Post }) => {
   return (
     <>
       <Link href={`${BLOG.path}/${post.slug}`}>
@@ -13,7 +14,10 @@ const BlogPost = ({ post }) => {
                 {post.title}
               </h2>
               <time className="flex-shrink-0 text-gray-600 dark:text-gray-400">
-                {formatDate(post?.date?.start_date || post.createdTime, BLOG.lang)}
+                {formatDate(
+                  post?.date?.start_date || post.createdTime,
+                  BLOG.lang
+                )}
               </time>
             </header>
             <main>
@@ -21,8 +25,11 @@ const BlogPost = ({ post }) => {
                 {post.summary}
               </p>
               <div className="mt-2.5">
-                {post.tags.map(tag => (
-                  <span key={tag} className="text-xs text-gray-500 font-normal rounded-full bg-gray-200 px-2 py-1 mr-2.5 cursor-pointer">
+                {post.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs text-gray-500 font-normal rounded-full bg-gray-200 px-2 py-1 mr-2.5 cursor-pointer"
+                  >
                     {tag}
                   </span>
                 ))}
@@ -31,9 +38,9 @@ const BlogPost = ({ post }) => {
           </article>
         </a>
       </Link>
-      <hr className="mb-7"/>
+      <hr className="mb-7" />
     </>
-  )
-}
+  );
+};
 
-export default BlogPost
+export default BlogPost;

@@ -1,6 +1,12 @@
 import Link from "next/link";
 
-const Tags = ({ tags, currentTag }) => {
+const Tags = ({
+  tags,
+  currentTag,
+}: {
+  tags: { [tag: string]: number };
+  currentTag?: string;
+}) => {
   if (!tags) return null;
 
   return (

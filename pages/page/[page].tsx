@@ -3,10 +3,19 @@ import BlogPost from "@/components/BlogPost";
 import Pagination from "@/components/Pagination";
 import { getAllPosts } from "@/lib/notion";
 import BLOG from "@/blog.config";
+import { Post } from "@/types";
 
-const Page = ({ postsToShow, page, showNext }) => {
+const Page = ({
+  postsToShow,
+  page,
+  showNext,
+}: {
+  postsToShow: Post[];
+  page: number;
+  showNext: boolean;
+}) => {
   return (
-    <Container>
+    <Container layout={undefined} fullWidth={false}>
       {postsToShow &&
         postsToShow.map((post) => <BlogPost key={post.id} post={post} />)}
       <Pagination page={page} showNext={showNext} />
@@ -14,7 +23,7 @@ const Page = ({ postsToShow, page, showNext }) => {
   );
 };
 
-export async function getStaticProps(context) {
+export async function getStaticProps(context: any) {
   const { page } = context.params; // Get Current Page No.
 
   const posts = await getAllPosts({ includePages: false });

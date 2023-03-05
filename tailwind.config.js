@@ -6,7 +6,14 @@ const fontSerifCJK = [`"Noto Serif CJK KR"`, `"Noto Serif KR"`];
 
 module.exports = {
   mode: "jit",
-  purge: ["./pages/**/*.js", "./components/**/*.js", "./layouts/**/*.js"],
+  purge: [
+    "./pages/**/*.js",
+    "./components/**/*.js",
+    "./layouts/**/*.js",
+    "./pages/**/*.tsx",
+    "./components/**/*.tsx",
+    "./layouts/**/*.tsx",
+  ],
   darkMode: BLOG.appearance === "auto" ? "media" : "class", // or 'media' or 'class'
   theme: {
     extend: {

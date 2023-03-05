@@ -5,7 +5,7 @@ export default function Tag({ tags, posts, currentTag }) {
   return <SearchLayout tags={tags} posts={posts} currentTag={currentTag} />;
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: { params: { tag: string } }) {
   const currentTag = params.tag;
   const posts = await getAllPosts({ includePages: false });
   const tags = getAllTagsFromPosts(posts);

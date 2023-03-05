@@ -6,7 +6,7 @@ export default function search({
   tags,
   posts,
 }: {
-  tags: string[];
+  tags: { [tag: string]: number };
   posts: Post[];
 }) {
   return <SearchLayout tags={tags} posts={posts} />;

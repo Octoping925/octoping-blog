@@ -4,7 +4,14 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ["plugin:react/recommended", "prettier", "next", "standard"],
+  parser: "@typescript-eslint/parser",
+  extends: [
+    "@typescript-eslint",
+    "plugin:react/recommended",
+    "prettier",
+    "next",
+    "standard",
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,

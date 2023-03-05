@@ -2,9 +2,17 @@ import { useState } from "react";
 import BlogPost from "@/components/BlogPost";
 import Container from "@/components/Container";
 import Tags from "@/components/Tags";
-import PropTypes from "prop-types";
+import { Post } from "@/types";
 
-const SearchLayout = ({ tags, posts, currentTag }) => {
+const SearchLayout = ({
+  tags,
+  posts,
+  currentTag,
+}: {
+  tags: { [tag: string]: number };
+  posts: Post[];
+  currentTag?: string;
+}) => {
   const [searchValue, setSearchValue] = useState("");
   let filteredBlogPosts = [];
 
@@ -17,7 +25,7 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
   }
 
   return (
-    <Container>
+    <Container layout={undefined} fullWidth={false}>
       <div className="relative">
         <input
           type="text"
@@ -37,7 +45,7 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
             strokeLinejoin="round"
             strokeWidth="2"
             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-          ></path>
+          />
         </svg>
       </div>
       <Tags tags={tags} currentTag={currentTag} />
@@ -53,12 +61,6 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
       </div>
     </Container>
   );
-};
-
-SearchLayout.propTypes = {
-  posts: PropTypes.array.isRequired,
-  tags: PropTypes.object.isRequired,
-  currentTag: PropTypes.string,
 };
 
 export default SearchLayout;
