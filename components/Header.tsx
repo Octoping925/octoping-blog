@@ -31,23 +31,30 @@ const NavBar = () => {
   );
 };
 
-const Header = ({ navBarTitle, fullWidth }) => {
+const Header = ({
+  navBarTitle,
+  fullWidth,
+}: {
+  navBarTitle: string;
+  fullWidth: boolean;
+}) => {
   const useSticky = !BLOG.autoCollapsedNavBar;
   const navRef = useRef(null);
-  const sentinalRef = useRef([]);
-  const handler = ([entry]) => {
-    if (navRef && navRef.current && useSticky) {
-      if (!entry.isIntersecting && entry !== undefined) {
-        navRef.current?.classList.add("sticky-nav-full");
-      } else {
-        navRef.current?.classList.remove("sticky-nav-full");
-      }
-    } else {
-      navRef.current?.classList.add("remove-sticky");
-    }
-  };
+  const sentinalRef = useRef();
+
   useEffect(() => {
-    const obvserver = new window.IntersectionObserver(handler);
+    const obvserver = new window.IntersectionObserver(([entry]) => {
+      if (navRef && navRef.current && useSticky) {
+        if (!entry.isIntersecting && entry !== undefined) {
+          navRef.current?.classList.add("sticky-nav-full");
+        } else {
+          navRef.current?.classList.remove("sticky-nav-full");
+        }
+      } else {
+        navRef.current?.classList.add("remove-sticky");
+      }
+    });
+
     obvserver.observe(sentinalRef.current);
     // Don't touch this, I have no idea how it works XD
     // return () => {
@@ -57,7 +64,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
   }, [sentinalRef]);
   return (
     <>
-      <div className="observer-element h-4 md:h-12" ref={sentinalRef}></div>
+      <div className="observer-element h-4 md:h-12" ref={sentinalRef} />
       <div
         className={`sticky-nav m-auto w-full h-6 flex flex-row justify-between items-center mb-2 md:mb-12 py-8 bg-opacity-60 ${
           !fullWidth ? "max-w-4xl px-4" : "px-4 md:px-24"
@@ -70,37 +77,6 @@ const Header = ({ navBarTitle, fullWidth }) => {
             <div className="font-bold text-4xl flex-initial dark:text-white mr-6 header-blog-title">
               Octoping
             </div>
-            {/* <a aria-label={BLOG.title}>
-              <div className="h-6">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    width="24"
-                    height="24"
-                    className="fill-current text-black dark:text-white"
-                  />
-                  <rect width="24" height="24" fill="url(#paint0_radial)" />
-                  <defs>
-                    <radialGradient
-                      id="paint0_radial"
-                      cx="0"
-                      cy="0"
-                      r="1"
-                      gradientUnits="userSpaceOnUse"
-                      gradientTransform="rotate(45) scale(39.598)"
-                    >
-                      <stop stopColor="#CFCFCF" stopOpacity="0.6" />
-                      <stop offset="1" stopColor="#E9E9E9" stopOpacity="0" />
-                    </radialGradient>
-                  </defs>
-                </svg>
-              </div>
-            </a> */}
           </Link>
           {navBarTitle ? (
             <p className="ml-2 font-medium text-day dark:text-night header-name">

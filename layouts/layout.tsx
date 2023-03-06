@@ -7,6 +7,7 @@ import {
   Collection,
   CollectionRow,
 } from "react-notion-x";
+import { ExtendedRecordMap } from "notion-types";
 import BLOG from "@/blog.config";
 import formatDate from "@/lib/formatDate";
 import { useLocale } from "@/lib/locale";
@@ -25,7 +26,7 @@ const Layout = ({
   fullWidth = false,
 }: {
   children?: React.ReactNode;
-  blockMap?: any;
+  blockMap?: ExtendedRecordMap;
   frontMatter: Post;
   fullWidth?: boolean;
 }) => {

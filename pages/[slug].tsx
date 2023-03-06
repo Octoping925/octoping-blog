@@ -2,8 +2,16 @@ import Layout from "@/layouts/layout";
 import { getAllPosts, getPostBlocks } from "@/lib/notion";
 import BLOG from "@/blog.config";
 import { createHash } from "crypto";
+import { Post } from "@/types";
+import { ExtendedRecordMap } from "notion-types";
 
-const BlogPost = ({ post, blockMap }) => {
+const BlogPost = ({
+  post,
+  blockMap,
+}: {
+  post: Post;
+  blockMap: ExtendedRecordMap;
+}) => {
   if (!post) return null;
 
   return (
@@ -20,7 +28,11 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params: { slug } }) {
+export async function getStaticProps({
+  params: { slug },
+}: {
+  params: { slug: string };
+}) {
   const posts = await getAllPosts({ includePages: true });
   const post = posts.find((t) => t.slug === slug);
 
