@@ -26,7 +26,7 @@ export default function filterPublishedPosts({
       return (
         post.title &&
         post.slug &&
-        post?.status?.[0] === "Published" &&
+        post?.status?.[0] === "Public" &&
         postDate < tomorrow
       );
     });
