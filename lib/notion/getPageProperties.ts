@@ -1,13 +1,22 @@
 import { getTextContent, getDateValue } from "notion-utils";
 import { NotionAPI } from "notion-client";
+import { BlockMap, CollectionPropertySchemaMap } from "notion-types";
 
-async function getPageProperties(id, block, schema, authToken) {
+async function getPageProperties(
+  id: string,
+  block: BlockMap,
+  schema: CollectionPropertySchemaMap,
+  authToken?: string
+) {
   const api = new NotionAPI({ authToken });
-  const rawProperties = Object.entries(block?.[id]?.value?.properties || []);
+  const rawProperties: [string, any][] = Object.entries(
+    block?.[id]?.value?.properties || []
+  );
   const excludeProperties = ["date", "select", "multi_select", "person"];
 
-  const properties = {};
-  properties.id = id;
+  const properties = {
+    id,
+  };
 
   for (const [key, val] of rawProperties) {
     if (schema[key]?.type && !excludeProperties.includes(schema[key].type)) {
@@ -35,8 +44,11 @@ async function getPageProperties(id, block, schema, authToken) {
             if (rawUsers[i][0][1]) {
               const userId = rawUsers[i][0];
               const res = await api.getUsers(userId);
+
               const resValue =
+                // @ts-ignore
                 res?.recordMapWithRoles?.notion_user?.[userId[1]]?.value;
+
               const user = {
                 id: resValue?.id,
                 first_name: resValue?.given_name,
