@@ -89,12 +89,16 @@ pre[class*="language-"] {
 
 /* css for code */
 @font-face {
-  font-family: "D2Coding";
-  src: url("../public/fonts/D2Coding.ttf");
+  font-family: "JetBrainsMono";
+  src: url("../public/fonts/JetBrainsMono-Regular.ttf");
+}
+
+.notion .notion-code {
+  font-size: 90%;
 }
 
 pre.notion-code > code {
-  font-family: "D2Coding", monospace;
+  font-family: "JetBrainsMono", monospace;
 }
 
 .token.operator {
