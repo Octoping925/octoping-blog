@@ -20,7 +20,7 @@ const BLOG = {
   socialLink: "",
   seo: {
     keywords: ["Blog", "Website", "Notion"],
-    googleSiteVerification: "GYOA9l5-wYglImurrWcUSCiDXMpaXJioAEjQuTbo-Lg", // Remove the value or replace it with your own google site verification code
+    googleSiteVerification: "dz_sRbFn2a0d9P1YJHvCPA75Kc_mBoamIuxAm6xRTdU", // Remove the value or replace it with your own google site verification code
   },
   notionPageId: process.env.NOTION_PAGE_ID, // DO NOT CHANGE THIS！！！
   notionAccessToken: process.env.NOTION_ACCESS_TOKEN, // Useful if you prefer not to make your database public
