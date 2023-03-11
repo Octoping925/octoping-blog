@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@fxts/core": "^0.13.0",
+    "@vercel/analytics": "^0.1.11",
     "axios": ">=0.21.1",
     "cross-env": "^7.0.3",
     "feed": "^4.2.2",
