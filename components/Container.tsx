@@ -40,6 +40,10 @@ function Container({
             content={BLOG.seo.googleSiteVerification}
           />
         )}
+        <meta
+          name="naver-site-verification"
+          content="561cb75baef44e75ee1f90b0458decc4fd1f2be6"
+        />
         {BLOG.seo.keywords && (
           <meta name="keywords" content={BLOG.seo.keywords.join(", ")} />
         )}
