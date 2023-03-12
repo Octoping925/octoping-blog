@@ -13,7 +13,11 @@ const Page = ({
   totalPosts: Post[];
 }) => {
   return (
-    <MainLayout page={page} postsToShow={postsToShow} totalPosts={totalPosts} />
+    <MainLayout
+      page={page}
+      postsToShow={postsToShow ?? []}
+      totalPosts={totalPosts ?? []}
+    />
   );
 };
 
