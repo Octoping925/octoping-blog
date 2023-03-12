@@ -12,7 +12,7 @@ function CategorySidebar({
   return (
     categoryVisibility && (
       <div
-        className="category block md:hidden absolute top-0 left-0 w-full h-full z-10"
+        className="category block md:hidden top-0 left-0 w-full h-full z-10 fixed"
         style={{
           backgroundColor: "rgba(55, 65, 81, 0.5)",
         }}
