@@ -35,6 +35,9 @@ module.exports = {
           "Nanum Gothic",
         ],
       },
+      minWidth: {
+        650: "650px",
+      },
     },
   },
   variants: {

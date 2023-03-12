@@ -3,6 +3,7 @@ import BlogPost from "@/components/BlogPost";
 import Container from "@/components/Container";
 import Tags from "@/components/Tags";
 import { Post } from "@/types";
+import Searchbar from "@/components/Searchbar";
 
 const SearchLayout = ({
   tags,
@@ -26,28 +27,7 @@ const SearchLayout = ({
 
   return (
     <Container layout={undefined} fullWidth={false}>
-      <div className="relative">
-        <input
-          type="text"
-          placeholder={currentTag ? `#${currentTag} 검색 결과` : "검색하기"}
-          className="block w-full border px-4 py-2 border-black bg-white text-black dark:bg-night dark:border-white dark:text-white"
-          onChange={(e) => setSearchValue(e.target.value)}
-        />
-        <svg
-          className="absolute right-3 top-3 h-5 w-5 text-black dark:text-white"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-          />
-        </svg>
-      </div>
+      <Searchbar setSearchValue={setSearchValue} />
       <Tags tags={tags} currentTag={currentTag} />
       <div className="article-container my-8">
         {!filteredBlogPosts.length && (
