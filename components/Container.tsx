@@ -8,11 +8,13 @@ function Container({
   children,
   layout,
   fullWidth,
+  openCategory,
   ...customMeta
 }: {
   children: React.ReactNode;
   layout: string;
   fullWidth: boolean;
+  openCategory: () => void;
   title?: string;
   description?: string;
   type?: string;
@@ -88,6 +90,7 @@ function Container({
       >
         <Header
           navBarTitle={layout === "blog" ? meta.title : null}
+          openCategory={openCategory}
           fullWidth={fullWidth}
         />
         <main

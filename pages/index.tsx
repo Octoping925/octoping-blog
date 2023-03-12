@@ -15,8 +15,6 @@ export async function getStaticProps() {
     toArray
   );
 
-  console.log(category);
-
   return {
     props: {
       posts,

@@ -3,7 +3,7 @@ import Link from "next/link";
 import BLOG from "@/blog.config";
 import { useLocale } from "@/lib/locale";
 
-const NavBar = () => {
+const NavBar = ({ openCategory }: { openCategory: () => void }) => {
   const locale = useLocale();
   const links = [
     { id: 0, name: locale.NAV.INDEX, to: BLOG.path || "/", show: false },
@@ -14,7 +14,7 @@ const NavBar = () => {
 
   return (
     <div className="flex-shrink-0">
-      <ul className="flex flex-row">
+      <ul className="flex flex-row items-center">
         {links.map(
           (link) =>
             link.show && (
@@ -26,6 +26,12 @@ const NavBar = () => {
               </li>
             )
         )}
+        <li
+          className="block md:hidden text-2xl ml-4 text-black dark:text-gray-50 nav"
+          onClick={openCategory}
+        >
+          ≡
+        </li>
       </ul>
     </div>
   );
@@ -33,9 +39,11 @@ const NavBar = () => {
 
 const Header = ({
   navBarTitle,
+  openCategory,
   fullWidth,
 }: {
   navBarTitle: string;
+  openCategory: () => void;
   fullWidth: boolean;
 }) => {
   const useSticky = !BLOG.autoCollapsedNavBar;
@@ -88,7 +96,7 @@ const Header = ({
             </p>
           )}
         </div>
-        <NavBar />
+        <NavBar openCategory={openCategory} />
       </div>
     </>
   );
