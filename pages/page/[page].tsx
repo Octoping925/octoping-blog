@@ -8,17 +8,17 @@ import { Post } from "@/types";
 const Page = ({
   postsToShow,
   page,
-  showNext,
+  totalPosts,
 }: {
   postsToShow: Post[];
   page: number;
-  showNext: boolean;
+  totalPosts: number;
 }) => {
   return (
     <Container layout={undefined} fullWidth={false}>
       {postsToShow &&
         postsToShow.map((post) => <BlogPost key={post.id} post={post} />)}
-      <Pagination page={page} showNext={showNext} />
+      <Pagination page={page} totalPosts={totalPosts} />
     </Container>
   );
 };
@@ -39,6 +39,7 @@ export async function getStaticProps(context: any) {
     props: {
       page, // Current Page
       postsToShow,
+      totalPosts,
       showNext,
     },
     revalidate: 1,

@@ -9,13 +9,12 @@ export async function getStaticProps() {
   const posts = await getAllPosts({ includePages: false });
   const postsToShow = posts.slice(0, BLOG.postsPerPage);
   const totalPosts = posts.length;
-  const showNext = totalPosts > BLOG.postsPerPage;
 
   return {
     props: {
       page: 1, // current page is 1
       postsToShow,
-      showNext,
+      totalPosts,
     },
     revalidate: 1,
   };
@@ -24,11 +23,11 @@ export async function getStaticProps() {
 const blog = ({
   postsToShow,
   page,
-  showNext,
+  totalPosts,
 }: {
   postsToShow: Post[];
   page: number;
-  showNext: boolean;
+  totalPosts: number;
 }) => {
   return (
     <Container
@@ -40,7 +39,7 @@ const blog = ({
       {postsToShow.map((post) => (
         <BlogPost key={post.id} post={post} />
       ))}
-      {showNext && <Pagination page={page} showNext={showNext} />}
+      <Pagination page={page} totalPosts={totalPosts} />
     </Container>
   );
 };
