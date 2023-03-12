@@ -3,30 +3,29 @@ import BLOG from "@/blog.config";
 import { Post } from "@/types";
 import MainLayout from "@/layouts/main";
 import { useRouter } from "next/router";
-import { filter, pipe, toArray } from "@fxts/core";
 
 export async function getStaticProps() {
   const posts = await getAllPosts({ includePages: false });
+  const category = posts
+    .map((post) => post.category)
+    .filter((category) => category);
 
   return {
     props: {
       posts,
+      category,
     },
     revalidate: 1,
   };
 }
 
-const blog = ({ posts }: { posts: Post[] }) => {
+const blog = ({ posts, category }: { posts: Post[]; category: string[] }) => {
   const router = useRouter();
 
-  const category = router.query.category;
+  const selectedCategory = router.query.category;
   const categoryPosts =
-    typeof category === "string"
-      ? pipe(
-          posts,
-          filter((post) => post.category?.includes(category)),
-          toArray
-        )
+    typeof selectedCategory === "string"
+      ? posts.filter((post) => post.category?.includes(selectedCategory))
       : posts;
 
   const page = Number(router.query.page ?? 1);
@@ -40,6 +39,7 @@ const blog = ({ posts }: { posts: Post[] }) => {
       page={page}
       postsToShow={postsToShow}
       totalPosts={categoryPosts}
+      category={category}
     />
   );
 };
