@@ -1,4 +1,4 @@
-import Layout from "@/layouts/layout";
+import PostLayout from "@/layouts/post";
 import { getAllPosts, getPostBlocks } from "@/lib/notion";
 import BLOG from "@/blog.config";
 import { createHash } from "crypto";
@@ -15,7 +15,11 @@ const BlogPost = ({
   if (!post) return null;
 
   return (
-    <Layout blockMap={blockMap} frontMatter={post} fullWidth={post.fullWidth} />
+    <PostLayout
+      blockMap={blockMap}
+      frontMatter={post}
+      fullWidth={post.fullWidth}
+    />
   );
 };
 

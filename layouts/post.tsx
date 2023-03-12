@@ -19,7 +19,7 @@ const mapPageUrl = (id: string) => {
   return "https://www.notion.so/" + id.replace(/-/g, "");
 };
 
-const Layout = ({
+const PostLayout = ({
   children,
   blockMap,
   frontMatter,
@@ -102,4 +102,4 @@ const Layout = ({
   );
 };
 
-export default Layout;
+export default PostLayout;
