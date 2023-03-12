@@ -2,46 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 @font-face {
-  font-family: 'IBM Plex Sans';
+  font-family: "IBM Plex Sans";
   font-weight: 100 900;
   font-display: swap;
   font-style: normal;
-  font-named-instance: 'Regular';
-  src: url('/fonts/IBMPlexSansVar-Roman.woff2') format('woff2');
+  font-named-instance: "Regular";
+  src: url("/fonts/IBMPlexSansVar-Roman.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: 'IBM Plex Sans';
+  font-family: "IBM Plex Sans";
   font-weight: 100 900;
   font-display: swap;
   font-style: italic;
-  font-named-instance: 'Italic';
-  src: url('/fonts/IBMPlexSansVar-Italic.woff2') format('woff2');
+  font-named-instance: "Italic";
+  src: url("/fonts/IBMPlexSansVar-Italic.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: 'Source Serif';
+  font-family: "Source Serif";
   font-weight: 100 900;
   font-display: swap;
   font-style: normal;
-  font-named-instance: 'Regular';
-  src: url('/fonts/SourceSerif.var.woff2') format('woff2');
+  font-named-instance: "Regular";
+  src: url("/fonts/SourceSerif.var.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: 'Source Serif';
+  font-family: "Source Serif";
   font-weight: 100 900;
   font-display: swap;
   font-style: italic;
-  font-named-instance: 'Italic';
-  src: url('/fonts/SourceSerif-Italic.var.woff2') format('woff2');
+  font-named-instance: "Italic";
+  src: url("/fonts/SourceSerif-Italic.var.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+  font-family: "AppleSDGothicNeo", "Noto Sans KR", sans-serif;
   font-display: swap;
   font-style: normal;
-  src: url('/fonts/AppleSDGothicNeoL.ttf') format('ttf');
+  src: url("/fonts/AppleSDGothicNeoL.ttf") format("ttf");
 }
 
 html {
@@ -63,8 +63,9 @@ body::-webkit-scrollbar-thumb {
 }
 h1 {
   font-family: Pretendard, "SF Pro KR", "SF Pro Display", "SF Pro Icons",
-  -apple-system, BlinkMacSystemFont, "Basier Square", "Apple SD Gothic Neo",
-  Roboto, "Noto Sans KR", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -apple-system, BlinkMacSystemFont, "Basier Square", "Apple SD Gothic Neo",
+    Roboto, "Noto Sans KR", "Noto Sans", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
 }
 
 ::selection {
@@ -131,18 +132,18 @@ nav {
 }
 
 .header-blog-title {
-  font-family: 'Shadows Into Light', cursive;
+  font-family: "Shadows Into Light", cursive;
 }
 
 @media (min-width: 768px) {
   .sticky-nav-full {
-    @apply max-w-full border-b border-opacity-50 border-gray-200 dark:border-gray-600 dark:border-opacity-50;
+    @apply max-w-full border-b border-opacity-50 border-gray-200 dark:border-gray-600 dark:border-opacity-50 bg-day dark:bg-night;
   }
   .header-name {
     display: block;
     opacity: 0;
     transition: all 0.5s cubic-bezier(0.4, 0, 0, 1);
-    font-family: 'Nanum Gothic';
+    font-family: "Nanum Gothic";
     font-size: 1.2rem;
     font-weight: 700;
   }
