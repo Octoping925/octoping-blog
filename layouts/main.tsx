@@ -29,7 +29,7 @@ const MainLayout = ({
         <aside className="max-w-md hidden md:block">
           <Category category={category} />
         </aside>
-        <div className="main max-w-4xl md:min-w-650">
+        <div className="main w-full max-w-4xl md:min-w-650">
           <Searchbar setSearchValue={setSearchValue} />
           <div className="article-container my-8">
             {!postsToShow.length && (
