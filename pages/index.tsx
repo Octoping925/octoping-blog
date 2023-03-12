@@ -18,19 +18,18 @@ export async function getStaticProps() {
 
 const blog = ({ posts }: { posts: Post[] }) => {
   const router = useRouter();
-  const category = router.query.category;
-  const page = Number(router.query.page ?? 1);
 
+  const category = router.query.category;
   const categoryPosts =
     typeof category === "string"
       ? pipe(
           posts,
-          filter((post) => post.category),
-          filter((post) => post.category.includes(category)),
+          filter((post) => post.category?.includes(category)),
           toArray
         )
       : posts;
 
+  const page = Number(router.query.page ?? 1);
   const postsToShow = categoryPosts.slice(
     BLOG.postsPerPage * (page - 1),
     BLOG.postsPerPage * page
