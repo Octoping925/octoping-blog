@@ -60,7 +60,9 @@ const MainLayout = ({
           <BlogPost key={post.id} post={post} />
         ))}
       </div>
-      {searchValue || <Pagination page={page} totalPosts={totalPosts.length} />}
+      {!searchValue && (
+        <Pagination page={page} totalPosts={totalPosts.length} />
+      )}
     </Container>
   );
 };
