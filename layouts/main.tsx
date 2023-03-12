@@ -14,16 +14,13 @@ const MainLayout = ({
   totalPosts: Post[];
 }) => {
   const [searchValue, setSearchValue] = useState("");
-  let filteredBlogPosts = [];
 
   if (searchValue !== "") {
-    filteredBlogPosts = totalPosts.filter((post) => {
+    postsToShow = totalPosts.filter((post) => {
       const tagContent = post.tags ? post.tags.join(" ") : "";
       const searchContent = post.title + post.summary + tagContent;
       return searchContent.toLowerCase().includes(searchValue.toLowerCase());
     });
-  } else {
-    filteredBlogPosts = postsToShow;
   }
 
   return (
@@ -51,12 +48,12 @@ const MainLayout = ({
         </svg>
       </div>
       <div className="article-container my-8">
-        {!filteredBlogPosts.length && (
+        {!postsToShow.length && (
           <p className="text-gray-500 dark:text-gray-300">
             검색 결과가 없습니다.
           </p>
         )}
-        {filteredBlogPosts.slice(0, 20).map((post) => (
+        {postsToShow.slice(0, 20).map((post) => (
           <BlogPost key={post.id} post={post} />
         ))}
       </div>

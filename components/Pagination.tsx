@@ -18,7 +18,7 @@ const Pagination = ({
 
   return (
     <div className="flex font-medium text-black dark:text-gray-100 justify-between">
-      <Link href={page - 1 === 1 ? `${BLOG.path || "/"}` : `/page/${page - 1}`}>
+      <Link href={page - 1 === 1 ? `${BLOG.path || "/"}` : `?page=${page - 1}`}>
         <a className={isAbleToGoPrev ? "" : "invisible"}>
           <button id="prev" className="block cursor-pointer">
             ← {locale.PAGINATION.PREV}
@@ -29,13 +29,13 @@ const Pagination = ({
         {pages.map((page) => (
           <Link
             key={page}
-            href={page === 1 ? `${BLOG.path || "/"}` : `/page/${page}`}
+            href={page === 1 ? `${BLOG.path || "/"}` : `?page=${page}`}
           >
             {page}
           </Link>
         ))}
       </div>
-      <Link href={`/page/${page + 1}`}>
+      <Link href={`?page=${page + 1}`}>
         <a className={isAbleToGoNext ? "" : "invisible"}>
           <button id="next" className="block cursor-pointer">
             {locale.PAGINATION.NEXT} →
