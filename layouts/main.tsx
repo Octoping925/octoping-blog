@@ -38,15 +38,16 @@ const MainLayout = ({
           <div className="main w-full max-w-4xl md:min-w-650">
             <Searchbar setSearchValue={setSearchValue} />
             <div className="article-container my-8">
-              {searchValue !== "" && postsToShow.length == 0 ? (
-                <p className="text-gray-500 dark:text-gray-300">
-                  검색 결과가 없습니다.
-                </p>
-              ) : (
-                searchResult
-                  .slice(0, 20)
-                  .map((post) => <BlogPost key={post.id} post={post} />)
-              )}
+              {searchValue !== "" &&
+                (postsToShow.length === 0 ? (
+                  <p className="text-gray-500 dark:text-gray-300">
+                    검색 결과가 없습니다.
+                  </p>
+                ) : (
+                  searchResult
+                    .slice(0, 20)
+                    .map((post) => <BlogPost key={post.id} post={post} />)
+                ))}
               {searchValue === "" &&
                 postsToShow.map((post) => (
                   <BlogPost key={post.id} post={post} />
