@@ -4,7 +4,7 @@ export type Post = {
   category: [string];
   type: ["Post" | "Page"];
   slug: string;
-  tags: string[];
+  tags?: string[];
   summary?: string;
   title?: string;
   status?: [string];
