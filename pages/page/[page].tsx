@@ -24,11 +24,12 @@ const Page = ({
 };
 
 export async function getStaticProps(context: any) {
-  const { page } = context.params; // Get Current Page No.
+  const param = context.params; // Get Current Page No.
+  const page = Number(param.page);
 
   const posts = await getAllPosts({ includePages: false });
   const postsToShow = posts.slice(
-    BLOG.postsPerPage * (page - 1),
+    BLOG.postsPerPage * (Number(page) - 1),
     BLOG.postsPerPage * page
   );
 

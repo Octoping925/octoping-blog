@@ -1,7 +1,6 @@
 import { useState } from "react";
 import BlogPost from "@/components/BlogPost";
 import Container from "@/components/Container";
-import Tags from "@/components/Tags";
 import { Post } from "@/types";
 import Pagination from "@/components/Pagination";
 
