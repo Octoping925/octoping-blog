@@ -6,6 +6,7 @@ import Pagination from "@/components/Pagination";
 import Searchbar from "@/components/Searchbar";
 import Category from "@/components/Category";
 import { usePostSearch } from "@/hooks/usePostSearch";
+import CategorySidebar from "@/components/CategorySidebar";
 
 const MainLayout = ({
   page,
@@ -54,32 +55,11 @@ const MainLayout = ({
           <div className="hidden md:block w-32"></div>
         </div>
       </Container>
-      {categoryVisibility && (
-        <div
-          className="category block md:hidden absolute top-0 left-0 w-full h-full z-10"
-          style={{
-            backgroundColor: "rgba(55, 65, 81, 0.5)",
-          }}
-          onClick={(event) => {
-            if (event.target === event.currentTarget) {
-              setCategoryVisibility(false);
-            }
-          }}
-        >
-          <aside
-            className="categoryBody flex justify-center absolute left-1/2 w-1/2 h-full pt-10 bg-day dark:bg-gray-700"
-            onClick={(event) => {
-              if (event.target !== event.currentTarget) {
-                setCategoryVisibility(false);
-              }
-            }}
-          >
-            <div className="h-28">
-              <Category category={category} />
-            </div>
-          </aside>
-        </div>
-      )}
+      <CategorySidebar
+        categoryVisibility={categoryVisibility}
+        setCategoryVisibility={setCategoryVisibility}
+        category={category}
+      />
     </>
   );
 };

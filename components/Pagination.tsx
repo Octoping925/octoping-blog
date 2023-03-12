@@ -25,7 +25,7 @@ const Pagination = ({
           </button>
         </a>
       </Link>
-      <div className="w-44 flex justify-between">
+      <div className="w-44 flex justify-around">
         {pages.map((page) => (
           <Link
             key={page}
