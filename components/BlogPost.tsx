@@ -25,7 +25,7 @@ const BlogPost = ({ post }: { post: Post }) => {
                 {post.summary}
               </p>
               <div className="mt-2.5">
-                {post.tags.map((tag) => (
+                {post.tags?.map((tag) => (
                   <span
                     key={tag}
                     className="text-xs text-gray-500 font-normal rounded-full bg-gray-200 px-2 py-1 mr-2.5 cursor-pointer"
