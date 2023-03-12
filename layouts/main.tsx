@@ -3,7 +3,6 @@ import BlogPost from "@/components/BlogPost";
 import Container from "@/components/Container";
 import { Post } from "@/types";
 import Pagination from "@/components/Pagination";
-import Link from "next/link";
 import Searchbar from "@/components/Searchbar";
 import Category from "@/components/Category";
 import { usePostSearch } from "@/hooks/usePostSearch";
@@ -20,12 +19,14 @@ const MainLayout = ({
   category: string[];
 }) => {
   const [searchValue, setSearchValue] = useState("");
-  postsToShow = usePostSearch(totalPosts, searchValue);
+  if (searchValue !== "") {
+    postsToShow = usePostSearch(totalPosts, searchValue);
+  }
 
   return (
     <Container layout={undefined} fullWidth={false}>
       <div className="flex justify-center">
-        <aside className="max-w-sm hidden md:block">
+        <aside className="max-w-md hidden md:block">
           <Category category={category} />
         </aside>
         <div className="main max-w-4xl md:min-w-650">

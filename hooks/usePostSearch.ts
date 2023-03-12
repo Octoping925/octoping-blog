@@ -10,10 +10,6 @@ export function usePostSearch(posts: Post[], searchValue: string) {
   }, [posts, searchValue]);
 
   function searchAlgorithm(posts: Post[], searchValue: string) {
-    if (searchValue === "") {
-      return posts;
-    }
-
     return posts.filter((post) => {
       const tagContent = post.tags ? post.tags.join(" ") : "";
       const searchContent = post.title + post.summary + tagContent;

@@ -7,7 +7,7 @@ function Category({ category }: { category: string[] }) {
         Category
       </thead>
       <tbody>
-        <tr className="flex text-m p-1 px-4 my-1 flex-shrink-0 rounded-xl text-gray-500 dark:text-white hover:bg-gray-200 dark:hover:bg-zinc-800 dark:hover:text-gray-500  false">
+        <tr className="flex text-m p-1 my-1 flex-shrink-0 rounded-xl text-gray-500 dark:text-white hover:bg-gray-200 dark:hover:bg-zinc-800 dark:hover:text-gray-500  false">
           <Link href="/">
             <a>All</a>
           </Link>
@@ -15,7 +15,7 @@ function Category({ category }: { category: string[] }) {
         {category.map((category) => (
           <tr
             key={category}
-            className="flex text-m p-1 px-4 my-1 flex-shrink-0 rounded-xl text-gray-500 dark:text-white hover:bg-gray-200 dark:hover:bg-zinc-800 dark:hover:text-gray-500  false"
+            className="flex text-m p-1 my-1 flex-shrink-0 rounded-xl text-gray-500 dark:text-white hover:bg-gray-200 dark:hover:bg-zinc-800 dark:hover:text-gray-500  false"
           >
             <Link href={`?category=${category}`}>
               <a>{category}</a>

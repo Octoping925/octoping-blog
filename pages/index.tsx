@@ -3,12 +3,19 @@ import BLOG from "@/blog.config";
 import { Post } from "@/types";
 import MainLayout from "@/layouts/main";
 import { useRouter } from "next/router";
+import { filter, map, pipe, toArray, uniq } from "@fxts/core";
 
 export async function getStaticProps() {
   const posts = await getAllPosts({ includePages: false });
-  const category = posts
-    .map((post) => post.category)
-    .filter((category) => category);
+  const category = pipe(
+    posts,
+    map((post) => post.category?.[0]),
+    filter((category) => category),
+    uniq,
+    toArray
+  );
+
+  console.log(category);
 
   return {
     props: {
