@@ -2,19 +2,14 @@ import PostLayout from "@/layouts/post";
 import { getAllPosts, getPostBlocks } from "@/lib/notion";
 import BLOG from "@/blog.config";
 import { createHash } from "crypto";
-import { Post } from "@/types";
-import { ExtendedRecordMap } from "notion-types";
 import { pipe, map, filter, uniq, toArray } from "@fxts/core";
+import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 
 const BlogPost = ({
   post,
   blockMap,
   category,
-}: {
-  post: Post;
-  blockMap: ExtendedRecordMap;
-  category: string[];
-}) => {
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   if (!post) return null;
 
   return (
@@ -38,11 +33,10 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({
   params: { slug },
-}: {
-  params: { slug: string };
-}) {
+}: GetStaticPropsContext) {
   const posts = await getAllPosts({ includePages: true });
   const post = posts.find((t) => t.slug === slug);
+
   const category = pipe(
     posts,
     map((post) => post.category?.[0]),

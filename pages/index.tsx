@@ -1,9 +1,9 @@
 import { getAllPosts } from "@/lib/notion";
 import BLOG from "@/blog.config";
-import { Post } from "@/types";
 import MainLayout from "@/layouts/main";
 import { useRouter } from "next/router";
 import { filter, map, pipe, toArray, uniq } from "@fxts/core";
+import { InferGetStaticPropsType } from "next";
 
 export async function getStaticProps() {
   const posts = await getAllPosts({ includePages: false });
@@ -24,10 +24,13 @@ export async function getStaticProps() {
   };
 }
 
-const blog = ({ posts, category }: { posts: Post[]; category: string[] }) => {
+const blog = ({
+  posts,
+  category,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
-
   const selectedCategory = router.query.category;
+
   const categoryPosts =
     typeof selectedCategory === "string"
       ? posts.filter((post) => post.category?.includes(selectedCategory))

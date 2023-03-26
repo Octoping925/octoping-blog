@@ -1,8 +1,14 @@
 import { getAllPosts, getAllTagsFromPosts } from "@/lib/notion";
 import SearchLayout from "@/layouts/search";
 import { pipe, map, filter, uniq, toArray } from "@fxts/core";
+import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 
-export default function Tag({ tags, posts, currentTag, category }) {
+export default function Tag({
+  tags,
+  posts,
+  currentTag,
+  category,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <SearchLayout
       tags={tags}
@@ -13,10 +19,11 @@ export default function Tag({ tags, posts, currentTag, category }) {
   );
 }
 
-export async function getStaticProps({ params }: { params: { tag: string } }) {
-  const currentTag = params.tag;
+export async function getStaticProps({ params }: GetStaticPropsContext) {
+  const currentTag = params.tag as string;
   const posts = await getAllPosts({ includePages: false });
   const tags = getAllTagsFromPosts(posts);
+
   const category = pipe(
     posts,
     map((post) => post.category?.[0]),
@@ -43,6 +50,7 @@ export async function getStaticProps({ params }: { params: { tag: string } }) {
 export async function getStaticPaths() {
   const posts = await getAllPosts({ includePages: false });
   const tags = getAllTagsFromPosts(posts);
+
   return {
     paths: Object.keys(tags).map((tag) => ({ params: { tag } })),
     fallback: true,

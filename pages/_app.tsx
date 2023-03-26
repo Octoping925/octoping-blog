@@ -20,12 +20,6 @@ function MyApp({ Component, pageProps }) {
       <Scripts />
       <LocaleProvider>
         <>
-          {BLOG.isProd && BLOG?.analytics?.provider === "ackee" && (
-            <Ackee
-              ackeeServerUrl={BLOG.analytics.ackeeConfig.dataAckeeServer}
-              ackeeDomainId={BLOG.analytics.ackeeConfig.domainId}
-            />
-          )}
           {BLOG.isProd && BLOG?.analytics?.provider === "ga" && <Gtag />}
           <Component {...pageProps} />
         </>
