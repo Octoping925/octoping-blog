@@ -15,7 +15,7 @@ const Utterances = ({ layout }) => {
 
     script.setAttribute("src", "https://utteranc.es/client.js");
     script.setAttribute("crossorigin", "anonymous");
-    script.setAttribute("async", true);
+    script.setAttribute("async", "true");
 
     Object.entries(BLOG.comment.utterancesConfig).forEach(([key, val]) =>
       script.setAttribute(key, val)
@@ -31,14 +31,12 @@ const Utterances = ({ layout }) => {
   });
 
   return (
-    <>
-      <div
-        id="comments"
-        className={layout && layout === "fullWidth" ? "" : "md:-ml-16"}
-      >
-        <div className="utterances-frame"></div>
-      </div>
-    </>
+    <div
+      id="comments"
+      className={layout && layout === "fullWidth" ? "" : "md:-ml-16"}
+    >
+      <div className="utterances-frame" />
+    </div>
   );
 };
 

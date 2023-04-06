@@ -1,9 +1,8 @@
 import PostLayout from "@/layouts/post";
 import { getAllPosts, getPostBlocks } from "@/lib/notion";
 import BLOG from "@/blog.config";
-import { createHash } from "crypto";
-import { pipe, map, filter, uniq, toArray } from "@fxts/core";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
+import { getCategoriesFromPosts } from "@/lib/notion/getCategoriesFromPosts";
 
 const BlogPost = ({
   post,
@@ -35,26 +34,13 @@ export async function getStaticProps({
   params: { slug },
 }: GetStaticPropsContext) {
   const posts = await getAllPosts({ includePages: true });
+  const category = getCategoriesFromPosts(posts);
+
   const post = posts.find((t) => t.slug === slug);
-
-  const category = pipe(
-    posts,
-    map((post) => post.category?.[0]),
-    filter((category) => category),
-    uniq,
-    toArray
-  );
-
   const blockMap = await getPostBlocks(post.id);
 
-  const emailHash = createHash("md5")
-    .update(BLOG.email)
-    .digest("hex")
-    .trim()
-    .toLowerCase();
-
   return {
-    props: { post, category, blockMap, emailHash },
+    props: { post, category, blockMap },
     revalidate: 1,
   };
 }

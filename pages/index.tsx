@@ -2,18 +2,12 @@ import { getAllPosts } from "@/lib/notion";
 import BLOG from "@/blog.config";
 import MainLayout from "@/layouts/main";
 import { useRouter } from "next/router";
-import { filter, map, pipe, toArray, uniq } from "@fxts/core";
 import { InferGetStaticPropsType } from "next";
+import { getCategoriesFromPosts } from "@/lib/notion/getCategoriesFromPosts";
 
 export async function getStaticProps() {
   const posts = await getAllPosts({ includePages: false });
-  const category = pipe(
-    posts,
-    map((post) => post.category?.[0]),
-    filter((category) => category),
-    uniq,
-    toArray
-  );
+  const category = getCategoriesFromPosts(posts);
 
   return {
     props: {

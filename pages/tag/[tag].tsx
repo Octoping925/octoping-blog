@@ -1,7 +1,7 @@
 import { getAllPosts, getAllTagsFromPosts } from "@/lib/notion";
 import SearchLayout from "@/layouts/search";
-import { pipe, map, filter, uniq, toArray } from "@fxts/core";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
+import { getCategoriesFromPosts } from "@/lib/notion/getCategoriesFromPosts";
 
 export default function Tag({
   tags,
@@ -23,14 +23,7 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
   const currentTag = params.tag as string;
   const posts = await getAllPosts({ includePages: false });
   const tags = getAllTagsFromPosts(posts);
-
-  const category = pipe(
-    posts,
-    map((post) => post.category?.[0]),
-    filter((category) => category),
-    uniq,
-    toArray
-  );
+  const category = getCategoriesFromPosts(posts);
 
   const filteredPosts = posts.filter(
     (post) => post && post.tags && post.tags.includes(currentTag)

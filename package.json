@@ -14,7 +14,7 @@
   },
   "scripts": {
     "dev": "cross-env NOTION_PAGE_ID=84c1539e7297449caf81be22d6dec77a next dev",
-    "build": "next build",
+    "build": "cross-env NOTION_PAGE_ID=84c1539e7297449caf81be22d6dec77a next build",
     "start": "next start",
     "lint": "next lint",
     "postbuild": "next-sitemap --config next-sitemap.config.js"
@@ -25,19 +25,18 @@
     "axios": ">=0.21.1",
     "cross-env": "^7.0.3",
     "feed": "^4.2.2",
-    "gitalk": "^1.7.2",
     "next": "^12.1.0",
     "notion-client": "^4.10.0",
     "notion-utils": "^4.10.0",
     "preact": "^10.5.15",
     "react": "^17.0.2",
-    "react-cusdis": "^2.0.1",
     "react-dom": "^17.0.2",
-    "react-notion-x": "^4.11.0",
-    "use-ackee": "^3.0.0"
+    "react-notion-x": "^4.11.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
     "autoprefixer": "^10.4.0",
     "eslint": "<8.0.0",
     "eslint-config-next": "^12.0.3",

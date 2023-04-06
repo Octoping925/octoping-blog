@@ -27,11 +27,6 @@ const BLOG = {
   notionAccessToken: process.env.NOTION_ACCESS_TOKEN, // Useful if you prefer not to make your database public
   analytics: {
     provider: "ga", // Currently we support Google Analytics and Ackee, please fill with 'ga' or 'ackee', leave it empty to disable it.
-    ackeeConfig: {
-      tracker: "", // e.g 'https://ackee.craigary.net/tracker.js'
-      dataAckeeServer: "", // e.g https://ackee.craigary.net , don't end with a slash
-      domainId: "", // e.g '0e2257a8-54d4-4847-91a1-0311ea48cc7b'
-    },
     gaConfig: {
       measurementId: "G-ZXN5RE153E", // e.g: G-XXXXXXXXXX
     },

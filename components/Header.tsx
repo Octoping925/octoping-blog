@@ -81,11 +81,9 @@ const Header = ({
         ref={navRef}
       >
         <div className="flex items-center">
-          <Link href="/">
-            <div className="font-bold text-4xl flex-initial dark:text-white mr-6 header-blog-title">
-              Octoping
-            </div>
-          </Link>
+          <div className="font-bold text-4xl flex-initial dark:text-white mr-6 header-blog-title">
+            <Link href="/">Octoping</Link>
+          </div>
           {navBarTitle ? (
             <p className="ml-2 font-medium text-day dark:text-night header-name">
               {navBarTitle}

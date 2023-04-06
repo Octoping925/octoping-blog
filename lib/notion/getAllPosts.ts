@@ -8,7 +8,7 @@ import { map, pipe, toArray, toAsync } from "@fxts/core";
 import { Post } from "@/types";
 
 /**
- * @param {{ includePages: boolean }} - false: posts only / true: include pages
+ * @param {{ includePages }} - false: posts only / true: include pages
  */
 export async function getAllPosts({
   includePages = false,

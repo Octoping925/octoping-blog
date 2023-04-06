@@ -10,7 +10,6 @@ import { LocaleProvider } from "@/lib/locale";
 import Scripts from "@/components/Scripts";
 import { Analytics } from "@vercel/analytics/react";
 
-const Ackee = dynamic(() => import("@/components/Ackee"), { ssr: false });
 const Gtag = dynamic(() => import("@/components/Gtag"), { ssr: false });
 
 function MyApp({ Component, pageProps }) {
