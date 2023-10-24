@@ -11,11 +11,11 @@ import { ExtendedRecordMap } from "notion-types";
 import BLOG from "@/blog.config";
 import formatDate from "@/lib/formatDate";
 import { useLocale } from "@/lib/locale";
-import { useRouter } from "next/router";
 import Comments from "@/components/Comments";
 import { Post } from "@/types";
 import CategorySidebar from "@/components/CategorySidebar";
 import { useState } from "react";
+import Link from "next/link";
 
 const mapPageUrl = (id: string) => {
   return "https://www.notion.so/" + id.replace(/-/g, "");
@@ -35,7 +35,6 @@ const PostLayout = ({
   category: string[];
 }) => {
   const locale = useLocale();
-  const router = useRouter();
   const [categoryVisibility, setCategoryVisibility] = useState(false);
 
   return (
@@ -87,14 +86,13 @@ const PostLayout = ({
           )}
         </article>
         <div className="flex justify-between font-medium text-gray-500 dark:text-gray-400">
-          <a>
-            <button
-              onClick={() => router.push(BLOG.path || "/")}
-              className="mt-2 cursor-pointer hover:text-black dark:hover:text-gray-100"
-            >
-              ← {locale.POST.BACK}
-            </button>
-          </a>
+          <Link href={BLOG.path || "/"}>
+            <a>
+              <button className="mt-2 cursor-pointer hover:text-black dark:hover:text-gray-100">
+                ← {locale.POST.BACK}
+              </button>
+            </a>
+          </Link>
           <a>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

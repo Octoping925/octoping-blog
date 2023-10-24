@@ -1,14 +1,55 @@
 import PostLayout from "@/layouts/post";
 import { getAllPosts, getPostBlocks } from "@/lib/notion";
-import BLOG from "@/blog.config";
-import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
+import {
+  GetServerSidePropsContext,
+  GetStaticPropsContext,
+  InferGetServerSidePropsType,
+  InferGetStaticPropsType,
+} from "next";
 import { getCategoriesFromPosts } from "@/lib/notion/getCategoriesFromPosts";
+
+// export async function getStaticPaths() {
+//   const posts = await getAllPosts({ includePages: true });
+//   const paths = posts.map((post) => ({ params: { slug: post.slug } }));
+
+//   return {
+//     paths,
+//     fallback: true,
+//   };
+// }
+
+// export async function getStaticProps({ params }: GetStaticPropsContext) {
+//   const posts = await getAllPosts({ includePages: true });
+//   const category = getCategoriesFromPosts(posts);
+
+//   const post = posts.find((t) => t.slug === params.slug);
+//   const blockMap = await getPostBlocks(post.id);
+
+//   return {
+//     props: { post, category, blockMap },
+//     revalidate: 1,
+//   };
+// }
+
+export async function getServerSideProps({
+  params,
+}: GetServerSidePropsContext) {
+  const posts = await getAllPosts({ includePages: true });
+  const category = getCategoriesFromPosts(posts);
+
+  const post = posts.find((t) => t.slug === params.slug);
+  const blockMap = await getPostBlocks(post.id);
+
+  return {
+    props: { post, category, blockMap },
+  };
+}
 
 const BlogPost = ({
   post,
   blockMap,
   category,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   if (!post) return null;
 
   return (
@@ -20,29 +61,5 @@ const BlogPost = ({
     />
   );
 };
-
-export async function getStaticPaths() {
-  const posts = await getAllPosts({ includePages: true });
-
-  return {
-    paths: posts.map((row) => `${BLOG.path}/${row.slug}`),
-    fallback: true,
-  };
-}
-
-export async function getStaticProps({
-  params: { slug },
-}: GetStaticPropsContext) {
-  const posts = await getAllPosts({ includePages: true });
-  const category = getCategoriesFromPosts(posts);
-
-  const post = posts.find((t) => t.slug === slug);
-  const blockMap = await getPostBlocks(post.id);
-
-  return {
-    props: { post, category, blockMap },
-    revalidate: 1,
-  };
-}
 
 export default BlogPost;
